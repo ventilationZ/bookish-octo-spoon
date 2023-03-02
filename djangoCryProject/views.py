@@ -9,7 +9,9 @@ def edit_page(request):
 
 
 def index_page(request):
-    return render(request, "index.html")
+    data = Student.objects.all()
+    context = {"data":data}
+    return render(request, "index.html",context)
 
 
 def login_page(request):
@@ -32,5 +34,8 @@ def insertData(request):
                         age=age,
                         gender=gender)
         query.save()
+        return redirect("/")
 
     return render(request, 'index.html')
+
+
