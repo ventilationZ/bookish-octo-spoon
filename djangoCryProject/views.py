@@ -41,3 +41,17 @@ def insertData(request):
         return redirect("/")
 
     return render(request, 'index.html')
+
+
+def deleteData(request, id):
+    d = Student.objects.get(id=id)
+    d.delete()
+    return redirect("/")
+    return render(request, 'index.html')
+
+
+def updateData(request, id):
+    d = Student.objects.get(id=id)
+    d.update()
+    return redirect("/")
+    return render(request, 'index.html')
