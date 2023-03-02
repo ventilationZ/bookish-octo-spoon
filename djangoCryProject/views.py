@@ -1,3 +1,5 @@
+import email
+
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -52,6 +54,6 @@ def deleteData(request, id):
 
 def updateData(request, id):
     d = Student.objects.get(id=id)
-    d.update()
+    d.update(email)
     return redirect("/")
     return render(request, 'index.html')
