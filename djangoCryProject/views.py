@@ -10,8 +10,8 @@ def edit_page(request):
 
 def index_page(request):
     data = Student.objects.all()
-    context = {"data":data}
-    return render(request, "index.html",context)
+    context = {"data": data}
+    return render(request, "index.html", context)
 
 
 def login_page(request):
@@ -28,14 +28,16 @@ def insertData(request):
         email = request.POST.get('email')
         age = request.POST.get('age')
         gender = request.POST.get('gender')
+        country = request.POST.get('country')
+        city = request.POST.get('city')
 
         query = Student(name=name,
                         email=email,
                         age=age,
-                        gender=gender)
+                        gender=gender,
+                        country=country,
+                        city=city)
         query.save()
         return redirect("/")
 
     return render(request, 'index.html')
-
-
